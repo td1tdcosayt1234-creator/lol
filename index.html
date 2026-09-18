@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="aurora">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>FROSTPINE — Where Forest Meets Ice</title>
+<meta name="description" content="FrostPine — a frozen forest realm. Aurora nights, pine valleys, glacier lakes." />
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+<canvas id="sky"></canvas>
+<div class="cursor-glow" id="cursorGlow"></div>
+
+<nav class="nav glass">
+  <div class="logo">❄<span>FROST</span>PINE</div>
+  <div class="nav-links">
+    <a href="#realms">Realms</a>
+    <a href="#explorer">Explorer</a>
+    <a href="#creatures">Creatures</a>
+    <a href="#seasons">Seasons</a>
+  </div>
+  <div class="theme-switch">
+    <button data-set-theme="forest" title="Forest">🌲</button>
+    <button data-set-theme="aurora" class="active" title="Aurora">🌌</button>
+    <button data-set-theme="ice" title="Ice">🧊</button>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="hero-badge">✨ LIVE FROM THE FROZEN VALLEY • <span id="clock">00:00</span></div>
+  <h1 class="hero-title"><span class="frost">FROST</span><span class="pine">PINE</span></h1>
+  <p class="hero-sub">Where emerald pines wear crystal snow.<br/>Two worlds. One enchanted forest.</p>
+  <div class="hero-btns">
+    <a href="#explorer" class="btn primary">Enter the Valley ❄</a>
+    <a href="#realms" class="btn ghost">Explore Realms 🌲</a>
+  </div>
+  <div class="hero-stats">
+    <div><b data-count="12480">0</b><i>Pine Trees</i></div>
+    <div><b data-count=" minus 12">-12°C</b><i>Valley Temp</i></div>
+    <div><b data-count="96">0</b><i>Aurora Nights / yr</i></div>
+    <div><b data-count="7">0</b><i>Frozen Lakes</i></div>
+  </div>
+
+  <!-- layered forest silhouette -->
+  <div class="landscape" aria-hidden="true">
+    <svg viewBox="0 0 1440 320" preserveAspectRatio="none" class="layer back">
+      <path d="M0,180 L120,90 L240,170 L360,70 L480,160 L600,60 L720,150 L840,80 L960,170 L1080,90 L1200,160 L1320,100 L1440,180 L1440,320 L0,320 Z"/>
+    </svg>
+    <svg viewBox="0 0 1440 200" preserveAspectRatio="none" class="layer mid">
+      <path id="pinesMid" d="M0,200 L0,140 L40,140 L30,110 L50,120 L45,90 L65,110 L60,80 L80,105 L75,70 L95,100 L90,60 L110,95 L130,60 L125,100 L145,70 L140,105 L160,80 L155,110 L175,90 L170,120 L190,110 L185,140 L225,140 L215,110 L235,120 L230,90 L250,110 L245,80 L265,105 L260,70 L280,100 L275,60 L295,95 L315,60 L310,100 L330,70 L325,105 L345,80 L340,110 L360,90 L355,120 L375,110 L370,140 L410,140 Z"/>
+    </svg>
+    <div class="lake"></div>
+  </div>
+</header>
+
+<div class="marquee"><div class="marquee-inner">
+<span>🌲 EMERALD PINES ❄ CRYSTAL SNOW 🌌 AURORA SKY 🧊 GLACIER LAKES 🦌 FROST DEER 🦉 ICE OWL 🌲 EMERALD PINES ❄ CRYSTAL SNOW 🌌 AURORA SKY 🧊 GLACIER LAKES 🦌 FROST DEER 🦉 ICE OWL&nbsp;</span>
+<span>🌲 EMERALD PINES ❄ CRYSTAL SNOW 🌌 AURORA SKY 🧊 GLACIER LAKES 🦌 FROST DEER 🦉 ICE OWL 🌲 EMERALD PINES ❄ CRYSTAL SNOW 🌌 AURORA SKY 🧊 GLACIER LAKES 🦌 FROST DEER 🦉 ICE OWL&nbsp;</span>
+</div></div>
+
+<section id="realms" class="section">
+  <h2 class="sec-title">Choose Your Realm</h2>
+  <p class="sec-sub">Scroll, hover, feel the temperature drop.</p>
+  <div class="realms-grid">
+    <article class="realm-card forest tilt reveal">
+      <div class="realm-art">🌲🌲🌲<div class="fog"></div></div>
+      <h3>Emerald Forest</h3>
+      <p>Moss trails, fireflies, whispering pines. Warm air +18°C, scent of cedar and rain.</p>
+      <ul><li>🟢 Firefly Grove</li><li>🟢 Moss Golem Ruins</li><li>🟢 Cedar Waterfall</li></ul>
+      <button class="btn small" onclick="setTheme('forest')">Enter Forest →</button>
+    </article>
+    <article class="realm-card ice tilt reveal">
+      <div class="realm-art">🏔️❄️🧊<div class="shine"></div></div>
+      <h3>Crystal Icefield</h3>
+      <p>Blue caves, frozen lakes, aurora reflections. Sharp air -18°C, pure silence.</p>
+      <ul><li>🔵 Glacier Mirror Lake</li><li>🔵 Aurora Ice Cave</li><li>🔵 Wolf Ridge</li></ul>
+      <button class="btn small" onclick="setTheme('ice')">Enter Ice →</button>
+    </article>
+    <article class="realm-card aurora tilt reveal">
+      <div class="realm-art">🌲🌌🧊<div class="aurora-beam"></div></div>
+      <h3>FrostPine Valley — Fusion</h3>
+      <p>The borderline where snow meets leaves. Best of both. Northern lights every night.</p>
+      <ul><li>🟣 Aurora Camp</li><li>🟣 Frost Deer Meadow</li><li>🟣 Twin Falls (half frozen)</li></ul>
+      <button class="btn small primary" onclick="setTheme('aurora')">Enter Fusion →</button>
+    </article>
+  </div>
+</section>
+
+<section id="explorer" class="section glass-panel reveal">
+  <h2 class="sec-title">❄ Temperature Explorer ❄</h2>
+  <p class="sec-sub">Drag the slider — watch the whole valley freeze or melt live.</p>
+  <div class="explorer-wrap">
+    <div class="scene" id="scene">
+      <div class="sun" id="sceneSun">☀️</div>
+      <div class="trees" id="sceneTrees">🌲🌲🌲🌲🌲🌲🌲</div>
+      <div class="ground" id="sceneGround"></div>
+      <div class="scene-temp" id="sceneTemp">+4°C</div>
+      <div class="scene-label" id="sceneLabel">Melting Spring</div>
+    </div>
+    <div class="controls">
+      <label>🌡️ Valley Temperature: <b id="tempVal">+4°C</b></label>
+      <input type="range" id="tempSlider" min="-20" max="22" value="4" />
+      <div class="temp-marks"><span>-20°C Blizzard</span><span>+22°C Summer</span></div>
+      <div class="weather-row">
+        <div>💨 Wind <b id="windVal">24 km/h</b></div>
+        <div>💧 Snow depth <b id="snowVal">38 cm</b></div>
+        <div>🌌 Aurora <b id="auroraVal">Strong</b></div>
+      </div>
+      <button class="btn primary" id="snowBurst">Trigger Snowstorm ❄</button>
+    </div>
+  </div>
+</section>
+
+<section id="creatures" class="section">
+  <h2 class="sec-title">Creatures of the Valley</h2>
+  <p class="sec-sub">Six guardians. Hover to reveal their power.</p>
+  <div class="grid">
+    <div class="card reveal"><div class="emoji">🦊</div><h4>Frost Fox</h4><p>Leaves crystal pawprints. Speed +99.</p><span class="tag ice-tag">ICE • FAST</span></div>
+    <div class="card reveal"><div class="emoji">🦉</div><h4>Ice Owl</h4><p>Sees through blizzards. Night guard.</p><span class="tag ice-tag">ICE • FLY</span></div>
+    <div class="card reveal"><div class="emoji">🦌</div><h4>Aurora Deer</h4><p>Antlers glow with northern lights.</p><span class="tag mix-tag">FUSION • RARE</span></div>
+    <div class="card reveal"><div class="emoji">🐻</div><h4>Moss Bear</h4><p>Sleeps under pines, wakes in spring.</p><span class="tag forest-tag">FOREST • TANK</span></div>
+    <div class="card reveal"><div class="emoji">🐺</div><h4>Glacier Wolf</h4><p>Howl freezes lakes. Pack leader.</p><span class="tag ice-tag">ICE • ALPHA</span></div>
+    <div class="card reveal"><div class="emoji">🧚</div><h4>Pine Spirit</h4><p>Protects seedlings. Grants luck.</p><span class="tag forest-tag">FOREST • MAGIC</span></div>
+  </div>
+</section>
+
+<section id="seasons" class="section">
+  <h2 class="sec-title">A Year in FrostPine</h2>
+  <div class="timeline">
+    <div class="t reveal"><b>❄ Deep Winter</b><span>Dec – Feb • -20°C • Ice caves open</span></div>
+    <div class="t reveal"><b>🌱 Melt Season</b><span>Mar – May • +4°C • Twin falls roar</span></div>
+    <div class="t reveal"><b>🌲 Green Summer</b><span>Jun – Aug • +22°C • Fireflies return</span></div>
+    <div class="t reveal"><b>🍂 Frost Fall</b><span>Sep – Nov • -2°C • First snow + gold leaves</span></div>
+  </div>
+</section>
+
+<footer>
+  <div class="foot-logo">❄ FROSTPINE VALLEY</div>
+  <p>Built with MCP • Forest + Ice • No libraries, pure HTML/CSS/JS</p>
+  <p class="tiny">Tip: press <kbd>F</kbd> forest / <kbd>I</kbd> ice / <kbd>A</kbd> aurora to switch themes.</p>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>
