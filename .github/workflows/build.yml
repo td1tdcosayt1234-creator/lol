@@ -1,0 +1,26 @@
+name: build
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verify FrostPine site
+        run: |
+          ls -la
+          test -f index.html && echo "index.html OK"
+          test -f styles.css && echo "styles.css OK"
+          test -f app.js && echo "app.js OK"
+          echo "FROSTPINE build passed ❄🌲"
+      - name: Upload site artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: frostpine-site
+          path: |
+            index.html
+            styles.css
+            app.js
+            README.md
